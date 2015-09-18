@@ -31,14 +31,15 @@ public class WorkerRunnable implements Runnable{
     		StringTokenizer st = new StringTokenizer(inputLine);  
     		st.nextToken();
     		String data = st.nextToken().trim();
-    		System.out.println(data);
+    		
     		String d = data.substring(data.indexOf("?")+1 );
-    		System.out.println("d is"+d);
+    	
     		String action = d.substring(0,d.indexOf("?") );
-    		System.out.println("action "+action);
+    	
     		String strtoconvert = d.substring(data.lastIndexOf("=")-1 );
-    		System.out.println("strtoconvert "+strtoconvert);
+    	
     		String result= null;
+    		// get the action from the url and convert the data to upper or lower case accordingly
     		if(action.equals("toUpperCase")){
     			 result = strtoconvert.toUpperCase();
     		}
