@@ -1,3 +1,5 @@
+/* the idea was to create a client thread that sends a http get to the server. 
+Refered to http://www.mkyong.com/java/how-to-send-http-request-getpost-in-java/. for senGet functionality*/
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
