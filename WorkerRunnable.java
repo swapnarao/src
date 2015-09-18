@@ -1,4 +1,8 @@
 
+/* refered to http://tutorials.jenkov.com/java-multithreaded-servers/thread-pooled-server.html for the WorkerRunnable code
+ and added a simple functionality to the worker thread. The idea was to make the worker thread convert the data that comes 
+ from the url to upper or lower string based on the action requested.*/
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -33,19 +37,20 @@ public class WorkerRunnable implements Runnable{
     		String data = st.nextToken().trim();
     		
     		String d = data.substring(data.indexOf("?")+1 );
-    	
+    	    // get the action(toUpperCase or toLowerCase)
     		String action = d.substring(0,d.indexOf("?") );
-    	
+    	     // get the data
     		String strtoconvert = d.substring(data.lastIndexOf("=")-1 );
     	
     		String result= null;
-    		// get the action from the url and convert the data to upper or lower case accordingly
+    		// convert data to upper or lower case accordingly
     		if(action.equals("toUpperCase")){
     			 result = strtoconvert.toUpperCase();
     		}
     		else if(action.equals("toLowerCase")){
     			 result = strtoconvert.toLowerCase();
     		}
+    		// display the converted string
             output.write(("HTTP/1.1 200 OK\n\nWorkerRunnable: " +this.serverText + " "+result+"").getBytes());
             output.close();
             System.out.println("Request processed: ");
